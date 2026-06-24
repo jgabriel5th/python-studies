@@ -4,6 +4,6 @@ print(type(variable))
 name = 'John'
 height = 1.80
 weight = 90
-imc = weight / height ** 2
+bmi = weight / height ** 2
 
-print(name, 'tem', height, 'de altura, pesa', weight, 'quilos e seu IMC é', imc)
+print(name, 'is', height, 'm tall, weighs', weight, 'kg and their BMI is', bmi)
