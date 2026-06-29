@@ -18,3 +18,14 @@ while index < length_name:
 
 print(new_name)
     
+# how to print String index in a while-structure - Practing
+name_example = 'Lewandowski' 
+
+length_nameExample = len(name_example)
+index_example = 0
+
+while index_example < length_nameExample:
+    print(name_example[index_example])
+    index_example += 1
+
+print('Done')
