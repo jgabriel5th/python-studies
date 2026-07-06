@@ -24,7 +24,7 @@ while True:
         continue
 
     if typed_letter in secret_word:
-        right_letter += typed_letter
+        right_letter += typed_letter # Concatenation
     
     formed_word = ''
     for secret_letter in secret_word:

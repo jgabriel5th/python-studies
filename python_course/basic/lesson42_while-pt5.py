@@ -1,7 +1,7 @@
 sentence = 'Python is a programming language'\
 'multi-paradigm. '\
 'Python was created by Guido van Rossum.'
-# print(sentence.count('Python')) # count() is a str method used to count how many times a chosen caractere appeared.
+# print(sentence.count('Python')) # count() is a str method used to count how many times a chosen character appeared.
 
 i = 0
 qty_appeared_more_often = 0
