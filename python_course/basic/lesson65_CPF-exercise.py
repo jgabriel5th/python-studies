@@ -25,11 +25,19 @@ else:
 
 The first digit of the CPF is 7
 '''
+cpf_list = []
+while len(cpf_list) < 9:
+    cpf = input('Type the first 9 digits of a CPF(One number at a time): ')
+    if len(cpf) == 1:
+        int_cpf = int(cpf)
+        cpf_list.append(int_cpf)
+        print(*cpf_list)
+    else:
+        print('Only one number at a time is permitted')
 
-cpf = "14197024088"
 countdown = 10
 results = []
-cpf_list = (1, 4, 1, 9, 7, 0, 2, 4, 0)
+
 for number in cpf_list:
     result = number * countdown
     results.append(result)
@@ -39,7 +47,6 @@ number2 = 0
 for number1 in results:
     number2 += number1
     sum_result = number2
-print('The sum result is', sum_result)
 
 calculation_result = (sum_result * 10) % 11
 first_digit = 0 if calculation_result > 9 else calculation_result
