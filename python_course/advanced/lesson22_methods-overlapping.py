@@ -16,25 +16,45 @@
 
 class A:
     attribute_a = 'value a'
+    def __init__(self, attribute):
+        self.attribute = attribute
 
     def method(self):
+        print()
         print('A')
+
+    def method2(self):
+        print('Method A')
+        print()
 
 class B(A):
     attribute_b = 'value b'
 
+    def __init__(self, attribute, other_thing):
+        super().__init__(attribute)
+        self.other_thing = other_thing
+
     def method(self):
         print('B')
 
+    def method2(self):
+        print('Method B')
+        print()
+
 class C(B):
     attribute_c = 'value c'
+    def __init__(self, attribute, other_thing, another_thing):
+        super().__init__(attribute, other_thing)
+        self.another_thing = another_thing
+        
 
     def method(self):
-        super().method()
+        super(B, self).method() # A
+        super(B, self).method2() # A
+        super().method() # B
+        super().method2() # B
         print('C')
+        print('Method C')
 
-c = C()
-print(c.attribute_a)
-print(c.attribute_b)
-print(c.attribute_c)
-c.method()
+c = C('Attribute', 'Anything', 'Another')
+print(c.attribute, c.other_thing, c.another_thing)
