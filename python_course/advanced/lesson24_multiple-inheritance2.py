@@ -5,7 +5,7 @@
 # Simple Inheritance:
 # Animal -> Mammal -> Human -> Person -> Client
 #
-# Multiple Inheritance and mixes:
+# Multiple Inheritance and mixins:
 # Log -> FileLog
 # Animal -> Mammal -> Human -> Person -> Client
 # Client(Person, FileLog)
