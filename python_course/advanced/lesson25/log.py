@@ -6,13 +6,14 @@ from pathlib import Path
 LOG_FILE = Path(__file__).parent / 'log.txt'
 class Log:
     def _log(self, msg):
-        raise NotImplementedError('Implement log method')
+        raise NotImplementedError('Implement log method') # "Abstract" method: in order to inherit from this class, it's necessary
+    # to implement this method.
 
     def log_error(self, msg):
-        return self._log(f'Error: {msg}')
+        return self._log(f'Error: {msg}') # Concrete method
 
     def log_success(self, msg):
-        return self._log(f'Success: {msg}')
+        return self._log(f'Success: {msg}') # Concrete method
 
 class LogFileMixin(Log):
     def _log(self, msg):
