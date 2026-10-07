@@ -15,6 +15,7 @@ class AnotherError(Exception):
 
 def raising():
     exception_ = MyError('a', 'b', 'c')
+    exception_.add_note('Note 1')
     raise exception_
 
 try:
@@ -24,4 +25,6 @@ except (MyError, ZeroDivisionError) as error:
     print(error.args)
     print()
     exception_ = AnotherError('Rethrowing again')
+    exception_.__notes__ = error.__notes__.copy()
+    exception_.add_note('One more note')
     raise exception_ from error # rethrowing exception
