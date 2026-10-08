@@ -31,11 +31,19 @@ class MyOpen:
     def __exit__(self, class_exception, exception_, traceback_):
         print('CLOSING FILE')
         self._file.close()
+        # raise class_exception(*exception_.args).with_traceback(traceback_)
 
-FILE_PATH = 'lesson33_context-manager.txt'
+        # print(class_exception)
+        # print(exception_)
+        # print(traceback_)
+        
+        exception_.add_note('My note')
+        # return True # Exception handled
 
-with MyOpen(FILE_PATH, 'w') as file: # the return of variable 'something' will the return of __enter__
+
+
+with MyOpen('lesson33_context-manager.txt', 'w') as file: # the return of variable 'something' will the return of __enter__
     file.write('Line 1\n')
     file.write('Line 2\n')
-    file.write('Line 3\n')
-    print('WITH', f'{file=}')
+    file.write('Line 3\n', 123)
+    print('WITH', file)
