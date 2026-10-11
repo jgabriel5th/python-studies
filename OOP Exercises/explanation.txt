@@ -1,0 +1,3 @@
+The reason for the existence of this directory is basically because
+I want to practice Object-Oriented Programming with some exercises since I have been watching just lessons of this paradigm.
+The exercises will consist from the most basic such as creating a class Person to a LOG system.
