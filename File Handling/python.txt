@@ -1,2 +1,0 @@
-Python is a general-purpose, high-level, object-oriented programming language.
-Besides, it was created by Guido Van Rossum in 1991.
