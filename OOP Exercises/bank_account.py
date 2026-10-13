@@ -1,5 +1,6 @@
+import math
 class BankAccount:
-    def __init__(self, name: str, age: int, agency: int, account_number: int):
+    def __init__(self, name: str, age: int, agency: str, account_number: str):
         self._validate(name, age, agency, account_number)
         self.name = name
         self.age = age
@@ -12,21 +13,29 @@ class BankAccount:
         return self._balance
 
     @staticmethod
-    def _validate(name, age, agency, account_number):
-        if not isinstance(name, str):
-            raise TypeError('Name must be string')
+    def _validate(name: str, age: int, agency: str, account_number: str):
+        if any(not isinstance(value, str) for value in (name, agency, account_number)):
+            raise TypeError('Value must be string')
+        
         if not name.strip():
             raise ValueError('Name cannot be empty')
         
-        if any(not isinstance(value, int) or isinstance(value, bool) for value in (age, agency, account_number)):
-            raise TypeError('Value must be integer')
+        if not isinstance(age, int) or isinstance(age, bool):
+            raise TypeError('Age must be integer')
         
-        if any(value < 0 for value in (age, agency, account_number)):
+        if age < 0:
             raise ValueError('Negative numbers not allowed')
+
+        if not all(value.isdigit() for value in (agency, account_number)):
+            raise ValueError('Negative numbers are not allowed')
+            
         
         
     def deposit(self, value):
         if isinstance(value, (float, int)) and value > 0:
+            if not math.isfinite(value) or isinstance(value, bool):
+                return 'Invalid value. Operation aborted...'
+            
             self._balance += value
             return "Operation concluded"
             
@@ -36,13 +45,21 @@ class BankAccount:
         return f'Balance: ${self._balance}'
     
     def withdrawal(self, value):
-        if self._balance == 0:
-            return f'Your balance is {self._balance}, it is not possible to withdrawal'
+        if isinstance(value, (float, int)) and value > 0 and value <= self._balance:
+            if not math.isfinite(value) or isinstance(value, bool):
+                return 'Invalid value. Operation aborted...'
             
-        if isinstance(value, (float, int)) and value <= self._balance and value > 0:
             self._balance -= value
             return "Operation concluded"
+            
 
-        return 'Value higher than available in balance or invalide value. Operation aborted...'
+        return 'Value higher than available in balance or invalid value. Operation aborted...'
 
-account1 = BankAccount('John', 2039, 2050, 2084)
+account1 = BankAccount('John', 2039, "2050", "2084")
+print(account1.name)
+print(account1.deposit(float('inf')))
+print(account1.deposit(True))
+print(account1.deposit(1000))
+print(account1.info_balance())
+print(account1.withdrawal(True))
+print(account1.info_balance())
