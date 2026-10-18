@@ -6,11 +6,16 @@ class Stock:
 
     def list_product(self):
         for index, product in enumerate(self._product):
-            return f'Product {index+1}: {product.name}\nPrice: {product.price}\nQuantity: {product.quantity}'
+            print(f'Product {index+1}: {product.name}\nPrice: ${product.price}\nQuantity: {product.quantity}')
+
     def insert_product(self, *product):
+        if not isinstance(*product, Product):
+            raise TypeError('Product must be inserted')
         self._product += product
 
     def remove_product(self, product):
+        if not isinstance(product, Product):
+            raise TypeError('Product must be inserted')
         self._product.remove(product)
 
 class Product:
@@ -40,6 +45,6 @@ apple = Product('Apple', 1, 1)
 supermarket = Stock('Supermarket')
 supermarket.insert_product(banana)
 supermarket.insert_product(apple)
-print(supermarket.list_product())
-supermarket.remove_product(banana)
-print(supermarket.list_product())
+supermarket.list_product()
+supermarket.remove_product(apple)
+supermarket.list_product()
